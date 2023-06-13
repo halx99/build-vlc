@@ -12,6 +12,7 @@ cd -
 
 # build vlc
 git clone https://github.com/videolan/vlc
+cd vlc
 if [ $release_tag = "" ]; then
     echo Checking out to $release_tag ...
     git checkout $release_tag
