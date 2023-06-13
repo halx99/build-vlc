@@ -2,6 +2,9 @@
 # ucrt for win10+
 release_tag=$1
 
+# msvcrt, ucrt(may not works)
+crt=msvcrt
+
 # install deps
 sudo apt-get update -qq
 sudo apt-get install -qqy \
@@ -14,9 +17,9 @@ sudo apt-get install -qqy \
     meson autoconf
 
 # install toolchain
-wget https://github.com/mstorsjo/llvm-mingw/releases/download/20230603/llvm-mingw-20230603-ucrt-ubuntu-20.04-x86_64.tar.xz
-tar xvf llvm-mingw-20230603-ucrt-ubuntu-20.04-x86_64.tar.xz -C /opt
-export PATH=/opt/llvm-mingw-20230603-ucrt-ubuntu-20.04-x86_64/bin:$PATH
+wget https://github.com/mstorsjo/llvm-mingw/releases/download/20230603/llvm-mingw-20230603-$crt-ubuntu-20.04-x86_64.tar.xz
+tar xvf llvm-mingw-20230603-$crt-ubuntu-20.04-x86_64.tar.xz -C /opt
+export PATH=/opt/llvm-mingw-20230603-$crt-ubuntu-20.04-x86_64/bin:$PATH
 
 # clone & build vlc
 git clone https://github.com/videolan/vlc.git
