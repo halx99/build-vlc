@@ -36,8 +36,5 @@ jobs:
       - name: build
         run: |
           RELEASE_TAG_NAME=${{github.event.inputs.release_tag}}
-          if [ "$RELEASE_TAG_NAME" = "" ]; then
-            RELEASE_TAG_NAME=3.0.18
-          fi
-          ./linux_build.sh $RELEASE_TAG_NAME
+          ./linux-build.sh $RELEASE_TAG_NAME
 
