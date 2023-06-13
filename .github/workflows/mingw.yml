@@ -36,5 +36,10 @@ jobs:
       - name: build
         run: |
           RELEASE_TAG_NAME=${{github.event.inputs.release_tag}}
-          ./linux-build.sh $RELEASE_TAG_NAME
+          ./mingw-build.sh $RELEASE_TAG_NAME
+      - name: Upload libvlc-dev
+        uses: actions/upload-artifact@v3
+        with:
+          path: ./libvlc-dev/**
+          name: libvlc-dev
 
