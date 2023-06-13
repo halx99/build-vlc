@@ -1,5 +1,6 @@
 # refer to https://code.videolan.org/videolan/vlc/-/blob/master/doc/BUILD-win32.md
 # ucrt for win10+
+release_tag=$1
 
 # install deps
 sudo apt-get update -qq
@@ -19,6 +20,10 @@ export PATH=/opt/llvm-mingw-20230603-ucrt-ubuntu-20.04-x86_64/bin:$PATH
 
 # clone & build vlc
 git clone https://github.com/videolan/vlc.git
+if [ $release_tag = "" ]; then
+    echo Checking out to $release_tag ...
+    git checkout $release_tag
+fi
 mkdir build
 cd build
 ../vlc/extras/package/win32/build.sh -a x86_64 -z -D "E:/dev/vlc"
