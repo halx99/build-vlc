@@ -3,7 +3,7 @@
 release_tag=$1
 
 # msvcrt, ucrt(may not works)
-crt=msvcrt
+crt=ucrt
 
 # install deps
 sudo apt-get update -qq
@@ -29,6 +29,7 @@ if [ $release_tag != "" ]; then
     git checkout $release_tag
     cd -
 fi
+cp ./harfbuzz-patch/* ./vlc/contrib/src/harfbuzz/
 mkdir build
 cd build
 ../vlc/extras/package/win32/build.sh -a x86_64 -z -D "E:/dev/vlc"
