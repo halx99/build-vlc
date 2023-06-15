@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: linux
+name: CI
 
 # Controls when the workflow will run
 on:
@@ -19,11 +19,13 @@ on:
         default: '3.0.18'
         # Input has to be provided for the workflow to run
         required: false
-
+env:
+  RELEASE_TAG_NAME: '3.0.18'
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  linux:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -35,11 +37,35 @@ jobs:
       # Runs a single command using the runners shell
       - name: build
         run: |
-          RELEASE_TAG_NAME=${{github.event.inputs.release_tag}}
+          release_tag=${{github.event.inputs.release_tag}}
+          if [ $release_tag != "" ] ; then
+            export RELEASE_TAG_NAME=$release_tag
+          fi
           ./linux-build.sh $RELEASE_TAG_NAME
       - name: Upload libvlc-dev
         uses: actions/upload-artifact@v3
         with:
           path: ./libvlc-dev/**
           name: libvlc-dev
+  mingw:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: build
+        run: |
+          release_tag=${{github.event.inputs.release_tag}}
+          if [ $release_tag != "" ] ; then
+            export RELEASE_TAG_NAME=$release_tag
+          fi
+          ./linux-build.sh $RELEASE_TAG_NAME
+      - name: Upload libvlc-dev
+        uses: actions/upload-artifact@v3
+        with:
+          path: ./libvlc-dev/**
+          name: libvlc-dev
