@@ -23,7 +23,7 @@ export PATH=/opt/llvm-mingw-20230603-$crt-ubuntu-20.04-x86_64/bin:$PATH
 
 # clone & build vlc
 git clone https://github.com/videolan/vlc.git
-if [ $release_tag = "" ]; then
+if [ $release_tag != "" ]; then
     echo Checking out to $release_tag ...
     git checkout $release_tag
 fi
