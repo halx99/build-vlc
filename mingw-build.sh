@@ -39,10 +39,10 @@ cd build
 cd win64
 make install
 pwd # win64
-cd -
+cd ..
 pwd # build
-cd - 
+cd .. 
 pwd # project_root
-ls ./build/win64 -l -a
+ls ./build/win64/_win32 -l -a
 mv ./build/win64/_win32 ./libvlc-dev-win
 
