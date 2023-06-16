@@ -93,8 +93,8 @@ jobs:
         mkdir $DIST_DIR
         mkdir $DIST_DIR/linux
         mkdir $DIST_DIR/win
-        mv lib-vlc-linux-dev/* $DIST_DIR/linux/
-        mv lib-vlc-win-dev/* $DIST_DIR/win/
+        mv libvlc-dev-linux/* $DIST_DIR/linux/
+        mv libvlc-dev-win/* $DIST_DIR/win/
         zip -q -r $DIST_DIR.zip $DIST_DIR
         export DIST_PACKAGE=$DIST_DIR.zip
         ls
