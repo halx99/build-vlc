@@ -9,7 +9,7 @@ on:
     branches: [ "main" ]
     paths:
       - .github/workflows/build.yml
-      - ./*build.sh
+      - build*
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
@@ -41,7 +41,7 @@ jobs:
           if [ "$release_tag" != "" ] ; then
             export RELEASE_TAG_NAME=$release_tag
           fi
-          ./linux-build.sh $RELEASE_TAG_NAME
+          ./build-linux.sh $RELEASE_TAG_NAME
       - name: Upload libvlc-dev-linux
         uses: actions/upload-artifact@v3
         with:
@@ -63,7 +63,7 @@ jobs:
           if [ "$release_tag" != "" ] ; then
             export RELEASE_TAG_NAME=$release_tag
           fi
-          ./mingw-build.sh $RELEASE_TAG_NAME
+          ./build-mingw.sh $RELEASE_TAG_NAME
       - name: Upload libvlc-dev-win
         uses: actions/upload-artifact@v3
         with:
