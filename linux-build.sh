@@ -21,9 +21,7 @@ sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev liba52-0.7.4-
 sudo apt install flex bison gettext
 ./bootstrap
 cwd=`pwd`
-./configure --enable-debug --prefix=$cwd/../libvlc-dev --disable-lua --disable-xcb --disable-qt --enable-gnutls
+./configure --enable-debug --prefix=$cwd/../libvlc-linux-dev --disable-lua --disable-xcb --disable-qt --enable-gnutls
 make && make install
 cd -
 
-# create package for upload
-zip -q -r libvlc-dev.zip ./libvlc-dev

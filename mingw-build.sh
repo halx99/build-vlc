@@ -40,7 +40,5 @@ cd win64
 make install
 cd -
 cd -
-mv ./build/win64/_win32 ./libvlc-dev
+mv ./build/win64/_win32 ./libvlc-win-dev
 
-# create package for upload
-zip -q -r libvlc-dev.zip ./libvlc-dev

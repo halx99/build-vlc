@@ -1,15 +1,15 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: build
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+    paths:
+      - .github/workflows/build.yml
+      - *build.sh
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
@@ -42,11 +42,11 @@ jobs:
             export RELEASE_TAG_NAME=$release_tag
           fi
           ./linux-build.sh $RELEASE_TAG_NAME
-      - name: Upload libvlc-dev
+      - name: Upload libvlc-win-dev
         uses: actions/upload-artifact@v3
         with:
-          path: ./libvlc-dev/**
-          name: libvlc-dev
+          path: ./libvlc-win-dev/**
+          name: libvlc-win-dev
   mingw:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -64,8 +64,8 @@ jobs:
             export RELEASE_TAG_NAME=$release_tag
           fi
           ./mingw-build.sh $RELEASE_TAG_NAME
-      - name: Upload libvlc-dev
+      - name: Upload libvlc-linux-dev
         uses: actions/upload-artifact@v3
         with:
-          path: ./libvlc-dev/**
-          name: libvlc-dev
+          path: ./libvlc-linux-dev/**
+          name: libvlc-linux-dev
