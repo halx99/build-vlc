@@ -42,11 +42,11 @@ jobs:
             export RELEASE_TAG_NAME=$release_tag
           fi
           ./linux-build.sh $RELEASE_TAG_NAME
-      - name: Upload libvlc-win-dev
+      - name: Upload libvlc-dev-linux
         uses: actions/upload-artifact@v3
         with:
-          path: ./libvlc-win-dev/**
-          name: libvlc-win-dev
+          path: ./libvlc-dev-linux/**
+          name: libvlc-dev-linux
   mingw:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -64,8 +64,8 @@ jobs:
             export RELEASE_TAG_NAME=$release_tag
           fi
           ./mingw-build.sh $RELEASE_TAG_NAME
-      - name: Upload libvlc-linux-dev
+      - name: Upload libvlc-dev-win
         uses: actions/upload-artifact@v3
         with:
-          path: ./libvlc-linux-dev/**
-          name: libvlc-linux-dev
+          path: ./libvlc-dev-win/**
+          name: libvlc-dev-win
