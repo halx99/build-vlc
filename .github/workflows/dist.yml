@@ -93,7 +93,8 @@ jobs:
         TRAVIS_ARTIFACTS_REL=${{github.event.inputs.travis_artifacts_tag}}
         ls
         rm -rf ./libvlc-dev-linux/bin
-        rm -rf ./libvlc-dev-win/bin
+        rm -rf ./libvlc-dev-linux/share
+        rm -rf ./libvlc-dev-win/share
         zip -q -r libvlc-dev-linux.zip ./libvlc-dev-linux
         zip -q -r libvlc-dev-win.zip ./libvlc-dev-win
         ls
