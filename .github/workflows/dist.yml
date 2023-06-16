@@ -87,16 +87,10 @@ jobs:
 
     - name: Prepare dist package
       run: |
-        ls
         TRAVIS_ARTIFACTS_REL=${{github.event.inputs.travis_artifacts_tag}}
-        DIST_DIR=`pwd`/libvlc-dev-$RELEASE_TAG_NAME
-        mkdir $DIST_DIR
-        mkdir $DIST_DIR/linux
-        mkdir $DIST_DIR/win
-        mv libvlc-dev-linux/* $DIST_DIR/linux/
-        mv libvlc-dev-win/* $DIST_DIR/win/
-        zip -q -r $DIST_DIR.zip $DIST_DIR
-        export DIST_PACKAGE=$DIST_DIR.zip
+        ls
+        zip -q -r libvlc-dev-linux.zip ./libvlc-dev-linux
+        zip -q -r libvlc-dev-win.zip ./libvlc-dev-win
         ls
 
     - name: Upload dist package to release page
@@ -105,9 +99,9 @@ jobs:
       with:
         tag_name: ${{ env.RELEASE_TAG_NAME }}
         name: ${{ env.RELEASE_TAG_NAME }}
-        body_path: ${{ env.DIST_NOTES }}
         files: |
-          ${{ env.DIST_PACKAGE }}
+          libvlc-dev-linux.zip
+          libvlc-dev-win.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_REPOSITORY: halx99/build-vlc
