@@ -44,5 +44,5 @@ pwd # build
 cd - 
 pwd # project_root
 ls ./build/win64 -l -a
-mv ./build/win64/_win32 ./libvlc-win-dev
+mv ./build/win64/_win32 ./libvlc-dev-win
 
