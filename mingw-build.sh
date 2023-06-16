@@ -38,7 +38,11 @@ cd build
 ../vlc/extras/package/win32/build.sh -a x86_64 -z -D "E:/dev/vlc"
 cd win64
 make install
+pwd # win64
 cd -
-cd -
+pwd # build
+cd - 
+pwd # project_root
+ls ./build/win64 -l -a
 mv ./build/win64/_win32 ./libvlc-win-dev
 
