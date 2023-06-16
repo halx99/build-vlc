@@ -21,6 +21,9 @@ wget https://github.com/mstorsjo/llvm-mingw/releases/download/20230603/llvm-ming
 tar xvf llvm-mingw-20230603-$crt-ubuntu-20.04-x86_64.tar.xz -C /opt
 export PATH=/opt/llvm-mingw-20230603-$crt-ubuntu-20.04-x86_64/bin:$PATH
 
+# install deps
+sudo apt-get install gtk-doc-tools
+
 # clone & build vlc
 git clone https://github.com/videolan/vlc.git
 if [ $release_tag != "" ]; then
